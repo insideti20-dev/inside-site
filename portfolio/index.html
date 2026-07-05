@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio — INSIDE TI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#0A0F1C;
+    --bg-1:#0E1525;
+    --bg-2:#15203A;
+    --line:#23304F;
+    --line-soft:#1A2540;
+    --blue:#3B82F6;
+    --cyan:#22D3EE;
+    --amber:#F5A623;
+    --white:#F4F6FB;
+    --gray:#94A3B8;
+    --gray-dim:#5E6E8C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg-0);color:var(--white);
+    font-family:'Inter',sans-serif;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  img,video{display:block;max-width:100%;}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(10,15,28,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1080px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;}
+  .logo .ico{width:30px;height:30px;border-radius:8px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;}
+  .logo .ti{color:var(--blue);}
+  .navlinks{display:flex;gap:26px;font-size:14px;color:var(--gray);}
+  .navlinks a:hover{color:var(--white);}
+  .nav-cta{background:var(--blue);color:#fff;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:500;}
+  .nav-cta:hover{background:#2f6fe0;}
+  @media(max-width:680px){.navlinks{display:none;}}
+
+  /* hero */
+  .hero{padding:80px 0 56px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+  .eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 3px rgba(34,211,238,.15);}
+  .hero h1{font-size:clamp(30px,5vw,50px);font-weight:700;line-height:1.14;letter-spacing:-0.02em;max-width:760px;}
+  .hero h1 .hl{color:var(--blue);}
+  .hero p{margin-top:20px;font-size:16.5px;color:var(--gray);max-width:540px;}
+  .hero-meta{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;}
+  .meta-item{}
+  .meta-item .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--white);}
+  .meta-item .lbl{font-size:12.5px;color:var(--gray-dim);margin-top:2px;}
+
+  /* section head */
+  .section{padding:64px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;gap:20px;flex-wrap:wrap;}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);margin-bottom:8px;display:block;}
+  .section-head h2{font-size:clamp(24px,3.2vw,32px);font-weight:700;letter-spacing:-0.01em;}
+  .section-head p{color:var(--gray);font-size:14.5px;max-width:420px;}
+
+  /* project grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media(max-width:700px){.grid{grid-template-columns:1fr;}}
+
+  .project{
+    background:var(--bg-1);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .project:hover{border-color:var(--blue);transform:translateY(-3px);}
+  .thumb{
+    aspect-ratio:16/10;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .thumb .grad-a{background:linear-gradient(135deg,#15203A 0%,#1B2A4A 50%,#0E1525 100%);}
+  .thumb .grad-b{background:linear-gradient(135deg,#0E1525 0%,#182449 60%,#22D3EE1A 100%);}
+  .thumb .grad-c{background:linear-gradient(135deg,#15203A 0%,#0E1525 70%,#3B82F620 100%);}
+  .thumb .grad-d{background:linear-gradient(135deg,#0E1525 0%,#1B2A4A 40%,#F5A62315 100%);}
+  .thumb-tag{
+    position:absolute;top:14px;left:14px;background:rgba(10,15,28,0.7);
+    border:1px solid var(--line);padding:5px 11px;border-radius:20px;
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray);
+  }
+  .thumb-placeholder{
+    display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--gray-dim);
+  }
+  .thumb-placeholder svg{width:34px;height:34px;opacity:0.5;}
+  .thumb-placeholder span{font-family:'JetBrains Mono',monospace;font-size:11.5px;}
+
+  .project-body{padding:20px 22px 22px;}
+  .project-body h3{font-size:18px;font-weight:500;margin-bottom:6px;}
+  .project-body p{color:var(--gray);font-size:14px;margin-bottom:14px;}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);
+    background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.18);
+    padding:4px 10px;border-radius:20px;
+  }
+
+  /* video/reel section */
+  .reel-card{
+    background:var(--bg-1);border:1px solid var(--line);border-radius:16px;
+    padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:8px;overflow:hidden;
+  }
+  @media(max-width:700px){.reel-card{grid-template-columns:1fr;}}
+  .reel-video{
+    aspect-ratio:9/16;border-radius:10px;overflow:hidden;position:relative;
+    background:linear-gradient(160deg,#0E1525 0%,#182449 55%,#0A0F1C 100%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .play-btn{
+    width:56px;height:56px;border-radius:50%;background:rgba(59,130,246,0.15);
+    border:1px solid rgba(59,130,246,0.4);display:flex;align-items:center;justify-content:center;
+  }
+  .play-btn svg{width:20px;height:20px;margin-left:3px;}
+  .reel-copy{padding:24px 20px;display:flex;flex-direction:column;justify-content:center;}
+  .reel-copy .tag{margin-bottom:12px;}
+  .reel-copy h3{font-size:22px;font-weight:700;margin-bottom:10px;}
+  .reel-copy p{color:var(--gray);font-size:14.5px;margin-bottom:18px;}
+
+  /* contact */
+  .contact{background:var(--bg-1);border:1px solid var(--line);border-radius:16px;padding:48px 36px;text-align:center;}
+  .contact h2{font-size:clamp(24px,3.4vw,32px);font-weight:700;}
+  .contact p{color:var(--gray);margin-top:12px;max-width:480px;margin:12px auto 0;}
+  .btn-primary{background:var(--blue);color:#fff;padding:13px 26px;border-radius:9px;font-weight:500;font-size:14.5px;display:inline-flex;align-items:center;gap:8px;margin-top:26px;}
+  .btn-primary:hover{background:#2f6fe0;}
+  .phone{margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gray-dim);}
+
+  footer{border-top:1px solid var(--line-soft);padding:28px 0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  footer p{font-size:13px;color:var(--gray-dim);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <span class="ico">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M9 5 L3 12 L9 19" stroke="#3B82F6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 5 L21 12 L15 19" stroke="#22D3EE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      INSIDE<span class="ti">TI</span>
+    </a>
+    <div class="navlinks">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#video">Vídeo</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a href="https://wa.me/5591985526063" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Sua empresa, potencializada por IA</span>
+      <h1>Trabalhos que colocam negócios <span class="hl">no ar</span>.</h1>
+      <p>A INSIDE TI é especializada em criar sites profissionais e portfólios digitais para empresas e empreendedores, utilizando tecnologia de Inteligência Artificial para entregar resultados rápidos, modernos e com excelente custo-benefício.
+
+Peça um orçamento grátis →
+Ver serviços.</p>
+      <div class="hero-meta">
+        <div class="meta-item"><div class="num">04</div><div class="lbl">projetos em destaque</div></div>
+        <div class="meta-item"><div class="num">100%</div><div class="lbl">responsivos</div></div>
+        <div class="meta-item"><div class="num">&lt; 7d</div><div class="lbl">tempo médio de entrega</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trabalhos">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">/trabalhos</span>
+          <h2>Projetos selecionados</h2>
+        </div>
+        <p>Substitua cada bloco abaixo por um print real do site entregue — a imagem ideal é a tela inicial (hero) do projeto.</p>
+      </div>
+
+      <div class="grid">
+        <div class="project">
+          <div class="thumb grad-a">
+            <span class="thumb-tag">imagem do projeto</span>
+            <div class="thumb-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E6E8C" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 15l4-4 4 4 4-6 6 6"/></svg>
+              <span>Projeto 01 — Loja de roupas</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Site institucional — loja de roupas</h3>
+            <p>Site one-page com catálogo em destaque, localização e botão direto de WhatsApp.</p>
+            <div class="chips"><span class="chip">site institucional</span><span class="chip">e-commerce leve</span></div>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="thumb grad-b">
+            <span class="thumb-tag">imagem do projeto</span>
+            <div class="thumb-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E6E8C" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 15l4-4 4 4 4-6 6 6"/></svg>
+              <span>Projeto 02 — Fotógrafo</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Portfólio — fotógrafo autônomo</h3>
+            <p>Galeria de ensaios organizada por categoria, com formulário de contato para orçamento.</p>
+            <div class="chips"><span class="chip">portfólio</span><span class="chip">galeria visual</span></div>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="thumb grad-c">
+            <span class="thumb-tag">imagem do projeto</span>
+            <div class="thumb-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E6E8C" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 15l4-4 4 4 4-6 6 6"/></svg>
+              <span>Projeto 03 — Clínica</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Site institucional — clínica odontológica</h3>
+            <p>Apresentação dos serviços, equipe e agendamento direto via WhatsApp.</p>
+            <div class="chips"><span class="chip">site institucional</span><span class="chip">saúde</span></div>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="thumb grad-d">
+            <span class="thumb-tag">imagem do projeto</span>
+            <div class="thumb-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5E6E8C" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 15l4-4 4 4 4-6 6 6"/></svg>
+              <span>Projeto 04 — Arquiteta</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Portfólio — arquiteta e designer de interiores</h3>
+            <p>Projetos organizados por estilo, com galeria antes/depois de cada ambiente.</p>
+            <div class="chips"><span class="chip">portfólio</span><span class="chip">antes e depois</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="video">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="tag">/vídeo</span>
+          <h2>Processo em movimento</h2>
+        </div>
+        <p>Espaço reservado para um vídeo curto (reels) mostrando a criação de um site do zero ao ar.</p>
+      </div>
+
+      <div class="reel-card">
+        <div class="reel-video">
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="#22D3EE"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="reel-copy">
+          <span class="tag mono">substitua por vídeo .mp4</span>
+          <h3>Do briefing ao site no ar</h3>
+          <p>Um vídeo curto (30-60s) mostrando o processo de criação acelerado costuma performar muito bem no Instagram — grave a tela enquanto trabalha em um projeto real.</p>
+          <div class="chips"><span class="chip">formato 9:16</span><span class="chip">ideal para reels</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Coloque sua empresa no nível que ela merece</h2>
+        <p>Seu projeto pode ser o próximo dessa lista. Me conta sobre o seu negócio e vamos construir algo assim para você.</p>
+        <a href="https://wa.me/5591985526063" class="btn-primary" target="_blank" rel="noopener">Chamar no WhatsApp →</a>
+        <p class="phone">(91) 98552-6063 · Belém - PA</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 INSIDE TI — portfólio de projetos.</p>
+    <p class="mono">made with &lt;/&gt;</p>
+  </div>
+</footer>
+
+</body>
+</html>
